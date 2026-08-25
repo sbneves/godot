@@ -1,0 +1,21 @@
+[node name="Main"]
+class_name Main
+script = Preload("res://game.gd")
+
+[color_rect]
+color="#000000"
+
+[viewport]
+size=(640, 480)
+
+[label]
+position=(320, 240)
+text="Pong"
+align=ALIGN_CENTER
+font_size=64
+
+[label]
+position=(320, 300)
+text="Press Space to Start"
+align=ALIGN_CENTER
+font_size=32

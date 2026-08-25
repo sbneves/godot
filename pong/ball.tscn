@@ -1,0 +1,15 @@
+[node name="Ball"]
+class_name Ball
+script = Preload("res://ball.gd")
+
+[physics_body2d]
+mode="rigid"
+mass=1
+
+[area2d]
+monitoring=true
+
+[collision_shape2d]
+shape_type="rectangle"
+width=32
+height=32

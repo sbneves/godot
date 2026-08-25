@@ -1,0 +1,13 @@
+[node name="PlayerPaddle"]
+class_name PlayerPaddle
+script = Preload("res://player.gd")
+
+[physics_body2d]
+mode="kinematic"
+use_rectangular_collision_shape="true"
+collision_shape2d/width=20
+collision_shape2d/height=200
+
+[area2d]
+monitoring=true
+input_event=true
