@@ -1,23 +1,38 @@
 extends CharacterBody2D
 
-
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 const MAX_HEALTH = 2
 const DEATH_TIME = 2.0  # Time before scene reload
+const DAMAGE_TIME = 1.0
 var health
 var is_dead = false
+var is_taking_damage = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 # Animation state enum for type safety
-const AnimationState := {"IDLE": "idle", "RUN": "run", "JUMP": "jump", "DEATH": "death"}
+const AnimationState := {
+	"IDLE": "idle", 	
+	"RUN": "run", 
+	"JUMP": "jump", 
+	"DEATH": "death", 
+	"DAMAGE": "damage"
+	}
+	
+enum PlayerState {
+	NORMAL,
+	DEATH,
+	DAMAGE
+}
+var player_state : PlayerState
 
 func _ready() -> void:
 	health = MAX_HEALTH
+	player_state = PlayerState.NORMAL
 	print(health)
 
 func _physics_process(delta: float) -> void:
-	if is_dead:
+	if is_dead or is_taking_damage:
 		move_and_slide()
 		return
 		
@@ -69,6 +84,16 @@ func take_damage(dmg: int) -> void:
 	print(health)
 	if health <= 0 and is_dead == false:
 		die()
+	else:
+		print("take damage")
+		is_taking_damage = true
+		animated_sprite.play("damage")
+		get_tree().create_timer(DAMAGE_TIME).timeout.connect(_on_damage_timer_timeout)
+		
+
+func _on_damage_timer_timeout() -> void:
+	print("damage taken")
+	is_taking_damage = false
 	
 func die() -> void:
 	if is_dead:
