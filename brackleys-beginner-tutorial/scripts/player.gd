@@ -88,7 +88,7 @@ func take_damage(dmg: int) -> void:
 		print("take damage")
 		is_taking_damage = true
 		animated_sprite.play("damage")
-		get_tree().create_timer(DAMAGE_TIME).timeout.connect(_on_damage_timer_timeout)
+		get_tree().create_timer(DAMAGE_TIME, false).timeout.connect(_on_damage_timer_timeout)
 		
 
 func _on_damage_timer_timeout() -> void:
@@ -105,7 +105,7 @@ func die() -> void:
 	print("Playing death")
 	animated_sprite.play("death")
 
-	get_tree().create_timer(DEATH_TIME).timeout.connect(_on_death_timer_timeout)
+	get_tree().create_timer(DEATH_TIME, false).timeout.connect(_on_death_timer_timeout)
 
 
 func _on_death_timer_timeout() -> void:

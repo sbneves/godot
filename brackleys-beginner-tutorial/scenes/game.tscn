@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bolug1e45sefb" path="res://scenes/killzone.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://br2hmnue5oqby" path="res://scenes/slime.tscn" id="6_p57ef"]
 [ext_resource type="FontFile" uid="uid://cj65lx7ybvxm3" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="8_pause"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -254,3 +255,5 @@ theme_override_colors/font_color = Color(0.07450981, 0.59607846, 0.8627451, 1)
 theme_override_fonts/font = ExtResource("7_u5sy4")
 theme_override_font_sizes/font_size = 8
 text = "Space to jump"
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_pause")]
