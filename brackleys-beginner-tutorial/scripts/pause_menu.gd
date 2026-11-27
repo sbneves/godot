@@ -10,7 +10,9 @@ const MAIN_MENU_SCENE := "res://scenes/main_menu.tscn"
 
 func _ready() -> void:
 	hide()
-	if OS.has_feature("web"):
+	# Browsers can't close the tab, and Apple rejects iOS apps with a Quit
+	# button (users leave with the home gesture instead).
+	if OS.has_feature("web") or OS.has_feature("mobile"):
 		quit_button.hide()
 
 
